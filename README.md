@@ -1,16 +1,47 @@
-## Hi there 👋
+# Antonio Andrés
 
-<!--
-**fresforge/fresforge** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Computer Engineering student focused on software engineering, backend systems and cloud.
 
-Here are some ideas to get you started:
+I build practical software products and enjoy working on the logic, data and engineering decisions behind them.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Selected work
+
+### PowerStationSelect
+
+A decision engine for portable power stations that models energy consumption, output requirements, startup surge behavior and technical product compatibility.
+
+[Live product →](https://powerstationselect.com)
+
+### Kevrion
+
+Workshop-management software built around real operational workflows, PostgreSQL multi-tenancy, private storage and OCR-assisted vehicle intake.
+
+[Case study →](https://fres.dev/projects/kevrion)
+
+### Mencora
+
+A multi-workflow B2B automation system combining orchestration, structured AI analysis and human approval.
+
+[Case study →](https://fres.dev/projects/mencora)
+
+## Technical toolkit
+
+**Languages**  
+TypeScript · Java · Python · C · SQL
+
+**Web & application**  
+React · TanStack · REST APIs
+
+**Data**  
+PostgreSQL · Supabase
+
+**Systems**  
+Git · GitHub · Linux
+
+## Currently learning
+
+Docker · AWS · CI/CD
+
+## Contact
+
+[Portfolio](https://fres.dev) · [hello@fres.dev](mailto:hello@fres.dev)
