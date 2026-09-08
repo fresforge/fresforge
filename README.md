@@ -16,7 +16,7 @@ A decision engine for portable power stations that models energy consumption, ou
 
 Workshop-management software built around real operational workflows, PostgreSQL multi-tenancy, private storage and OCR-assisted vehicle intake.
 
-[Case study →](https://fres.dev/projects/kevrion)
+[Case study →](https://fres.dev/projects/kevrion) · [Workshop core →](https://github.com/fresforge/kevrion-workshop-core)
 
 ### Mencora
 
