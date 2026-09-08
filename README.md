@@ -10,7 +10,7 @@ I build practical software products and enjoy working on the logic, data and eng
 
 A decision engine for portable power stations that models energy consumption, output requirements, startup surge behavior and technical product compatibility.
 
-[Live product →](https://powerstationselect.com)
+[Live product →](https://powerstationselect.com) · [Engine core →](https://github.com/fresforge/powerstation-engine-core)
 
 ### Kevrion
 
