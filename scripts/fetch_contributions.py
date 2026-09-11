@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fetch fresforge's public contribution calendar and derive profile stats."""
 
-from __future__ import annotations
+# Maintained by the profile refresh workflow.\nfrom __future__ import annotations
 
 import datetime as dt
 import json
