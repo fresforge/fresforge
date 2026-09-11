@@ -1,0 +1,51 @@
+name: Refresh profile activity
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/fetch_contributions.py"
+      - "scripts/render_heatmap_svg.py"
+      - ".github/workflows/update-profile-art.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-activity
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Fetch public activity
+        env:
+          GH_PROFILE_USER: fresforge
+        run: python scripts/fetch_contributions.py
+
+      - name: Render animated graph
+        run: python scripts/render_heatmap_svg.py
+
+      - name: Commit changed activity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/contributions.json contrib-heatmap.svg
+          if git diff --cached --quiet; then
+            echo "Contribution graph is already current."
+            exit 0
+          fi
+          git commit -m "chore: refresh profile activity [skip ci]"
+          git push
