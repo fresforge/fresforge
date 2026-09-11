@@ -1,38 +1,4 @@
-#!/usr/bin/env python3
-"""Generate the animated FR identity panel used by the profile README."""
-
-from html import escape
-from pathlib import Path
-
-
-ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "fr-terminal-v2.svg"
-
-DETAILS = [
-    ("user", "Antonio Andrés"),
-    ("role", "Computer Engineering student"),
-    ("focus", "Software · Backend · Cloud"),
-    ("languages", "TypeScript · Java · Python · C · SQL"),
-    ("web", "React · TanStack"),
-    ("data", "PostgreSQL · Supabase"),
-    ("learning", "Docker · AWS · CI/CD"),
-    ("based", "Murcia, Spain"),
-]
-
-
-def render() -> str:
-    details = []
-    for index, (key, value) in enumerate(DETAILS):
-        delay = 0.55 + index * 0.11
-        y = 102 + index * 28
-        details.append(
-            f'<g class="reveal" style="animation-delay:{delay:.2f}s">'
-            f'<text class="key" x="470" y="{y}">{escape(key)}</text>'
-            f'<text class="value" x="568" y="{y}">{escape(value)}</text>'
-            '</g>'
-        )
-
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="860" height="350" viewBox="0 0 860 350" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="350" viewBox="0 0 860 350" role="img" aria-labelledby="title desc">
   <title id="title">FR(); — fresforge terminal identity</title>
   <desc id="desc">Antonio Andrés, a Computer Engineering student focused on software engineering, backend systems and cloud.</desc>
   <defs>
@@ -56,21 +22,21 @@ def render() -> str:
     </filter>
   </defs>
   <style>
-    text {{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }}
-    .reveal {{ opacity: 0; transform: translateY(7px); animation: reveal .42s cubic-bezier(.2,.8,.2,1) forwards; }}
-    .mark {{ fill: none; stroke: url(#fr); stroke-width: 27; stroke-linecap: square; stroke-linejoin: bevel; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.15s cubic-bezier(.4,0,.2,1) forwards; }}
-    .mark-back {{ fill: none; stroke: #332857; stroke-width: 27; stroke-linecap: square; stroke-linejoin: bevel; opacity: .82; }}
-    .paren {{ fill: none; stroke: #969aa3; stroke-width: 13; stroke-linecap: square; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw .72s .72s cubic-bezier(.4,0,.2,1) forwards; }}
-    .punct {{ fill: #9e88f7; opacity: 0; animation: pop .32s 1.18s cubic-bezier(.2,.9,.2,1.2) forwards; }}
-    .trace {{ fill: none; stroke: #9e88f7; stroke-width: 1; opacity: .23; }}
-    .key {{ fill: #9e88f7; font-size: 13px; }}
-    .value {{ fill: #f3f4f8; font-size: 13px; }}
-    .cursor {{ animation: blink 1s steps(1,end) infinite; }}
-    @keyframes reveal {{ to {{ opacity: 1; transform: translateY(0); }} }}
-    @keyframes draw {{ to {{ stroke-dashoffset: 0; }} }}
-    @keyframes pop {{ from {{ opacity: 0; transform: translateY(5px); }} to {{ opacity: 1; transform: translateY(0); }} }}
-    @keyframes blink {{ 0%,48% {{ opacity: 1; }} 49%,100% {{ opacity: 0; }} }}
-    @media (prefers-reduced-motion: reduce) {{ .reveal {{ opacity: 1; transform: none; animation: none; }} .mark,.paren {{ stroke-dashoffset: 0; animation: none; }} .punct {{ opacity: 1; animation: none; }} .cursor {{ animation: none; }} }}
+    text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+    .reveal { opacity: 0; transform: translateY(7px); animation: reveal .42s cubic-bezier(.2,.8,.2,1) forwards; }
+    .mark { fill: none; stroke: url(#fr); stroke-width: 27; stroke-linecap: square; stroke-linejoin: bevel; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.15s cubic-bezier(.4,0,.2,1) forwards; }
+    .mark-back { fill: none; stroke: #332857; stroke-width: 27; stroke-linecap: square; stroke-linejoin: bevel; opacity: .82; }
+    .paren { fill: none; stroke: #969aa3; stroke-width: 13; stroke-linecap: square; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw .72s .72s cubic-bezier(.4,0,.2,1) forwards; }
+    .punct { fill: #9e88f7; opacity: 0; animation: pop .32s 1.18s cubic-bezier(.2,.9,.2,1.2) forwards; }
+    .trace { fill: none; stroke: #9e88f7; stroke-width: 1; opacity: .23; }
+    .key { fill: #9e88f7; font-size: 13px; }
+    .value { fill: #f3f4f8; font-size: 13px; }
+    .cursor { animation: blink 1s steps(1,end) infinite; }
+    @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes pop { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes blink { 0%,48% { opacity: 1; } 49%,100% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; animation: none; } .mark,.paren { stroke-dashoffset: 0; animation: none; } .punct { opacity: 1; animation: none; } .cursor { animation: none; } }
   </style>
   <rect width="860" height="350" rx="14" fill="url(#panel)"/>
   <rect x="0.75" y="0.75" width="858.5" height="348.5" rx="13.25" fill="none" stroke="#292733" stroke-width="1.5"/>
@@ -93,12 +59,7 @@ def render() -> str:
   <circle cx="29" cy="76" r="2.5" fill="#9e88f7" opacity=".55"/><circle cx="404" cy="264" r="2.5" fill="#9e88f7" opacity=".55"/>
   <text x="54" y="302" fill="#969aa3" font-size="12">FR(); / FRESFORGE</text>
   <line x1="430" y1="72" x2="430" y2="292" stroke="#24232d"/>
-  {''.join(details)}
+  <g class="reveal" style="animation-delay:0.55s"><text class="key" x="470" y="102">user</text><text class="value" x="568" y="102">Antonio Andrés</text></g><g class="reveal" style="animation-delay:0.66s"><text class="key" x="470" y="130">role</text><text class="value" x="568" y="130">Computer Engineering student</text></g><g class="reveal" style="animation-delay:0.77s"><text class="key" x="470" y="158">focus</text><text class="value" x="568" y="158">Software · Backend · Cloud</text></g><g class="reveal" style="animation-delay:0.88s"><text class="key" x="470" y="186">languages</text><text class="value" x="568" y="186">TypeScript · Java · Python · C · SQL</text></g><g class="reveal" style="animation-delay:0.99s"><text class="key" x="470" y="214">web</text><text class="value" x="568" y="214">React · TanStack</text></g><g class="reveal" style="animation-delay:1.10s"><text class="key" x="470" y="242">data</text><text class="value" x="568" y="242">PostgreSQL · Supabase</text></g><g class="reveal" style="animation-delay:1.21s"><text class="key" x="470" y="270">learning</text><text class="value" x="568" y="270">Docker · AWS · CI/CD</text></g><g class="reveal" style="animation-delay:1.32s"><text class="key" x="470" y="298">based</text><text class="value" x="568" y="298">Murcia, Spain</text></g>
   <text x="470" y="318" fill="#969aa3" font-size="12">$ build --useful --reliable</text>
   <rect class="cursor" x="702" y="307" width="8" height="14" rx="1" fill="#9e88f7"/>
-</svg>'''
-
-
-if __name__ == "__main__":
-    OUT.write_text(render(), encoding="utf-8")
-    print(f"wrote {OUT}")
+</svg>

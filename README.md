@@ -2,7 +2,7 @@
 
 <p><code>fresforge@github ~ $ whoami</code></p>
 
-<img src="./fr-terminal.svg" width="860" alt="FR — Antonio Andrés, Computer Engineering student focused on software, backend and cloud" />
+<img src="./fr-terminal-v2.svg" width="860" alt="FR(); — Antonio Andrés, Computer Engineering student focused on software, backend and cloud" />
 
 <br>
 <br>

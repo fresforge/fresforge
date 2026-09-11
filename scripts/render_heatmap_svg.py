@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parent.parent
 IN_FILE = ROOT / "data" / "contributions.json"
 OUT_FILE = ROOT / "contrib-heatmap.svg"
 
-PALETTE = ["#161b22", "#0c2d48", "#0b4f6c", "#087ea4", "#2dd4bf"]
+PALETTE = ["#17171f", "#31284f", "#554487", "#7963c4", "#9e88f7"]
 CELL, GAP, STEP = 11, 3, 14
 PAD, LABEL_W, TOP_H, BAR_H = 22, 28, 22, 42
 
@@ -75,7 +75,7 @@ def render(data: dict[str, object]) -> str:
     parts = [f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
   <title id="title">fresforge contribution activity</title>
   <desc id="desc">Public GitHub contribution calendar for the last twelve months, refreshed daily.</desc>
-  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0d1117"/><stop offset="1" stop-color="#0a1320"/></linearGradient></defs>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#090a0f"/><stop offset=".72" stop-color="#0a0b12"/><stop offset="1" stop-color="#0d0b18"/></linearGradient></defs>
   <style>
     text {{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }}
     .cell {{ opacity: 0; transform: translateY(-5px); animation: cell .34s cubic-bezier(.2,.8,.2,1) forwards; }}
@@ -83,15 +83,15 @@ def render(data: dict[str, object]) -> str:
     @media (prefers-reduced-motion: reduce) {{ .cell {{ opacity: 1; transform: none; animation: none; }} }}
   </style>
   <rect width="{width}" height="{height}" rx="14" fill="url(#bg)"/>
-  <rect x=".75" y=".75" width="858.5" height="250.5" rx="13.25" fill="none" stroke="#30363d" stroke-width="1.5"/>
-  <line x1="0" y1="{BAR_H}" x2="{width}" y2="{BAR_H}" stroke="#30363d"/>
+  <rect x=".75" y=".75" width="858.5" height="250.5" rx="13.25" fill="none" stroke="#292733" stroke-width="1.5"/>
+  <line x1="0" y1="{BAR_H}" x2="{width}" y2="{BAR_H}" stroke="#292733"/>
   <circle cx="22" cy="21" r="5" fill="#ff5f56"/><circle cx="40" cy="21" r="5" fill="#ffbd2e"/><circle cx="58" cy="21" r="5" fill="#27c93f"/>
-  <text x="430" y="26" fill="#7d8590" font-size="12" text-anchor="middle">fresforge@github: ~/contributions --graph</text>''']
+  <text x="430" y="26" fill="#969aa3" font-size="12" text-anchor="middle">fresforge@github: ~/contributions --graph</text>''']
 
     for col_index, label in month_labels:
-        parts.append(f'<text x="{grid_left + col_index * STEP}" y="58" fill="#7d8590" font-size="10">{label}</text>')
+        parts.append(f'<text x="{grid_left + col_index * STEP}" y="58" fill="#969aa3" font-size="10">{label}</text>')
     for row, name in ((1, "Mon"), (3, "Wed"), (5, "Fri")):
-        parts.append(f'<text x="{PAD}" y="{grid_top + row * STEP + 9}" fill="#7d8590" font-size="9">{name}</text>')
+        parts.append(f'<text x="{PAD}" y="{grid_top + row * STEP + 9}" fill="#969aa3" font-size="9">{name}</text>')
 
     for col_index, column in enumerate(grid):
         for row_index, day in enumerate(column):
@@ -116,11 +116,11 @@ def render(data: dict[str, object]) -> str:
     best = data["best_day"]
     date_range = data["range"]
     parts.extend([
-        f'<line x1="22" y1="{stats_y - 18}" x2="838" y2="{stats_y - 18}" stroke="#21262d"/>',
-        f'<text x="22" y="{stats_y}" fill="#e6edf3" font-size="13"><tspan fill="#2dd4bf" font-weight="700">{total:,}</tspan><tspan fill="#7d8590"> public contributions · last 12 months</tspan></text>',
-        f'<text x="838" y="{stats_y}" fill="#7d8590" font-size="11" text-anchor="end">{date_range["start"]} → {date_range["end"]}</text>',
-        f'<text x="22" y="222" fill="#7d8590" font-size="12">current streak <tspan fill="#58a6ff" font-weight="700">{current}d</tspan>   ·   longest <tspan fill="#58a6ff" font-weight="700">{longest}d</tspan></text>',
-        f'<text x="838" y="222" fill="#7d8590" font-size="11" text-anchor="end">best day <tspan fill="#e6edf3" font-weight="700">{int(best["count"])}</tspan> · {best["date"]}</text>',
+        f'<line x1="22" y1="{stats_y - 18}" x2="838" y2="{stats_y - 18}" stroke="#24232d"/>',
+        f'<text x="22" y="{stats_y}" fill="#f3f4f8" font-size="13"><tspan fill="#9e88f7" font-weight="700">{total:,}</tspan><tspan fill="#969aa3"> public contributions · last 12 months</tspan></text>',
+        f'<text x="838" y="{stats_y}" fill="#969aa3" font-size="11" text-anchor="end">{date_range["start"]} → {date_range["end"]}</text>',
+        f'<text x="22" y="222" fill="#969aa3" font-size="12">current streak <tspan fill="#9e88f7" font-weight="700">{current}d</tspan>   ·   longest <tspan fill="#9e88f7" font-weight="700">{longest}d</tspan></text>',
+        f'<text x="838" y="222" fill="#969aa3" font-size="11" text-anchor="end">best day <tspan fill="#f3f4f8" font-weight="700">{int(best["count"])}</tspan> · {best["date"]}</text>',
         '</svg>',
     ])
     return "".join(parts)
