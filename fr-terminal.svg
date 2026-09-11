@@ -19,20 +19,29 @@
   <style>
     text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
     .reveal { opacity: 0; transform: translateY(7px); animation: reveal .42s cubic-bezier(.2,.8,.2,1) forwards; }
-    .ascii { font-size: 26px; font-weight: 700; fill: url(#fr); letter-spacing: .25px; }
+    .mark { fill: none; stroke: url(#fr); stroke-width: 34; stroke-linecap: square; stroke-linejoin: round; stroke-dasharray: 720; stroke-dashoffset: 720; animation: draw 1.25s cubic-bezier(.4,0,.2,1) forwards; }
+    .mark-back { fill: none; stroke: #123a50; stroke-width: 34; stroke-linecap: square; stroke-linejoin: round; opacity: .75; }
     .key { fill: #58a6ff; font-size: 13px; }
     .value { fill: #e6edf3; font-size: 13px; }
     .cursor { animation: blink 1s steps(1,end) infinite; }
     @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
     @keyframes blink { 0%,48% { opacity: 1; } 49%,100% { opacity: 0; } }
-    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; animation: none; } .cursor { animation: none; } }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; animation: none; } .mark { stroke-dashoffset: 0; animation: none; } .cursor { animation: none; } }
   </style>
   <rect width="860" height="350" rx="14" fill="url(#panel)"/>
   <rect x="0.75" y="0.75" width="858.5" height="348.5" rx="13.25" fill="none" stroke="#30363d" stroke-width="1.5"/>
   <line x1="0" y1="42" x2="860" y2="42" stroke="#30363d"/>
   <circle cx="22" cy="21" r="5" fill="#ff5f56"/><circle cx="40" cy="21" r="5" fill="#ffbd2e"/><circle cx="58" cy="21" r="5" fill="#27c93f"/>
   <text x="430" y="26" fill="#7d8590" font-size="12" text-anchor="middle">fresforge@github: ~/identity</text>
-  <g filter="url(#softGlow)"><text class="ascii reveal" x="52" y="112" style="animation-delay:0.12s">███████╗ ██████╗ </text><text class="ascii reveal" x="52" y="146" style="animation-delay:0.22s">██╔════╝ ██╔══██╗</text><text class="ascii reveal" x="52" y="180" style="animation-delay:0.32s">█████╗   ██████╔╝</text><text class="ascii reveal" x="52" y="214" style="animation-delay:0.42s">██╔══╝   ██╔══██╗</text><text class="ascii reveal" x="52" y="248" style="animation-delay:0.52s">██║      ██║  ██║</text><text class="ascii reveal" x="52" y="282" style="animation-delay:0.62s">╚═╝      ╚═╝  ╚═╝</text></g>
+  <g transform="translate(5 6)" aria-hidden="true">
+    <path class="mark-back" d="M72 266V92H190 M72 174H166"/>
+    <path class="mark-back" d="M238 266V92H316C354 92 374 110 374 140C374 169 354 187 316 187H238 M313 187L382 266"/>
+  </g>
+  <g filter="url(#softGlow)" aria-label="FR">
+    <path class="mark" d="M72 266V92H190 M72 174H166"/>
+    <path class="mark" d="M238 266V92H316C354 92 374 110 374 140C374 169 354 187 316 187H238 M313 187L382 266"/>
+  </g>
   <text x="54" y="302" fill="#7d8590" font-size="12">FR / FRESFORGE</text>
   <line x1="430" y1="72" x2="430" y2="292" stroke="#21262d"/>
   <g class="reveal" style="animation-delay:0.55s"><text class="key" x="470" y="102">user</text><text class="value" x="568" y="102">Antonio Andrés</text></g><g class="reveal" style="animation-delay:0.66s"><text class="key" x="470" y="130">role</text><text class="value" x="568" y="130">Computer Engineering student</text></g><g class="reveal" style="animation-delay:0.77s"><text class="key" x="470" y="158">focus</text><text class="value" x="568" y="158">Software · Backend · Cloud</text></g><g class="reveal" style="animation-delay:0.88s"><text class="key" x="470" y="186">languages</text><text class="value" x="568" y="186">TypeScript · Java · Python · C · SQL</text></g><g class="reveal" style="animation-delay:0.99s"><text class="key" x="470" y="214">web</text><text class="value" x="568" y="214">React · TanStack</text></g><g class="reveal" style="animation-delay:1.10s"><text class="key" x="470" y="242">data</text><text class="value" x="568" y="242">PostgreSQL · Supabase</text></g><g class="reveal" style="animation-delay:1.21s"><text class="key" x="470" y="270">learning</text><text class="value" x="568" y="270">Docker · AWS · CI/CD</text></g><g class="reveal" style="animation-delay:1.32s"><text class="key" x="470" y="298">based</text><text class="value" x="568" y="298">Murcia, Spain</text></g>
